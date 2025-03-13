@@ -43,6 +43,7 @@ def get_test_input(code):
     messages=[{"role": "user", "content": prompt}])
     try:
         inputs = json.loads(response.choices[0].message.content)
+        print(input)
         return inputs if isinstance(inputs, list) else []
     except json.JSONDecodeError:
         return []
