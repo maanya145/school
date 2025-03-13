@@ -15,12 +15,13 @@ OUTPUT_DIR = "output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Get modified Python files
+# Get modified Python files inside 'scripts/' only
 result = subprocess.run(
-    ["git", "diff", "--name-only", "HEAD~1"],
+    ["git", "diff", "--name-only", "HEAD~1", "--", "scripts/"],
     capture_output=True,
     text=True
 )
-modified_files = [f.strip() for f in result.stdout.split("\n") if f.endswith(".py")]
+modified_files = [f.strip() for f in result.stdout.split("\n") if f.endswith(".py") and f.startswith("scripts/")]
 
 def get_test_input(code):
     """Use OpenAI to analyze code and generate appropriate input."""
