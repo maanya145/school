@@ -2,11 +2,11 @@ print("Script Started...")
 import os
 import openai
 from openai import OpenAI
-
-client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=os.environ.get("OPENAI_API_KEY"))
-import subprocess
 import json
 import glob
+
+# Initialize OpenAI client
+client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=os.environ.get("OPENAI_API_KEY"))
 
 # Get all Python files inside 'scripts/'
 modified_files = glob.glob("scripts/**/*.py", recursive=True)
@@ -14,64 +14,43 @@ modified_files = glob.glob("scripts/**/*.py", recursive=True)
 if not modified_files:
     print("No Python files found in 'scripts/'. Exiting...")
     exit(0)
-# Set API key
 
-
-# TODO: The 'openai.api_base' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(base_url="https://api.groq.com/openai/v1")'
-# openai.api_base = "https://api.groq.com/openai/v1"
-
-# Directory to store outputs
+# Directory to store AI-generated outputs
 OUTPUT_DIR = "output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Get modified Python files
-# Get modified Python files inside 'scripts/' only
 
-
-def get_test_input(code):
-    """Use OpenAI to analyze code and generate appropriate input."""
+def get_script_output(code):
+    """Use OpenAI to analyze code and generate the expected output."""
     prompt = f"""
-    Analyze the following Python script and provide user inputs that are most relevant to its functionality.
+    Analyze the following Python script and predict its expected output **without running it**.
     
     ```
     {code}
     ```
-    
-    Only respond with a JSON array of inputs, like ["42", "hello", "10 20"]. 
 
-    Strictly adhere to these rules:
-    - Your response must be a valid JSON array.
-    - Do not include any additional text, explanations, or formatting.
-    - Do not return more inputs than the script explicitly requires.
-"""
-    response = client.chat.completions.create(model="llama-3.3-70b-specdec",
-    messages=[{"role": "user", "content": prompt}])
-    print(response)
-    try:
-        inputs = json.loads(response.choices[0].message.content)
-        print(input)
-        return inputs if isinstance(inputs, list) else []
-    except json.JSONDecodeError:
-        return []
+    Only respond with the exact output **as if it were printed by Python**.
+    - Do not include any explanations, formatting, or additional text.
+    - If the script requires user input, assume reasonable values.
+    """
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-specdec",  # Your preferred model
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    return response.choices[0].message.content.strip()
+
 
 for file in modified_files:
     with open(file, "r") as f:
         code = f.read()
 
-    # Get test inputs
-    test_inputs = get_test_input(code)
-
-    # Run the script with simulated inputs
-    process = subprocess.run(
-        ["python3", file],
-        input="\n".join(test_inputs),
-        text=True,
-        capture_output=True
-    )
+    # Get AI-predicted output
+    predicted_output = get_script_output(code)
 
     # Save output
     output_file = os.path.join(OUTPUT_DIR, f"{os.path.basename(file)}.txt")
     with open(output_file, "w") as f:
-        f.write(process.stdout + "\n" + process.stderr)
+        f.write(predicted_output)
 
-    print(f"Generated output for {file} -> {output_file}")
+    print(f"Generated AI output for {file} -> {output_file}")
