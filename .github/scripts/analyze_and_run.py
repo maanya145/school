@@ -44,7 +44,7 @@ def get_test_input(code):
     - Do not include any additional text, explanations, or formatting.
     - Do not return more inputs than the script explicitly requires.
 """
-    response = client.chat.completions.create(model="mixtral-8x7b-32768",
+    response = client.chat.completions.create(model="llama-3.3-70b-specdec",
     messages=[{"role": "user", "content": prompt}])
     print(response)
     try:
