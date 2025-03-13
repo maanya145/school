@@ -1,5 +1,5 @@
 #1. Write a Python program to find the LCM (Least Common Multiple) of two numbers 
-
+#.
 # Taking input from the user
 num1 = int(input("Enter first number: "))
 num2 = int(input("Enter second number: "))
