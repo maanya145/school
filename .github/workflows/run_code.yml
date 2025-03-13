@@ -25,11 +25,11 @@ jobs:
         with:
           python-version: "3.12"  # Specify exact version for faster setup
           cache: "pip"  # Enable pip caching
-
+          cache-dependency-path: ".github/scripts/requirements.txt"
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install openai
+          pip install -r .github/scripts/requirements.txt
         
       - name: Get Changed Files
         id: changed-files
