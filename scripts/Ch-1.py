@@ -6,8 +6,7 @@ num2 = int(input("Enter second number: "))
 
 # Start from the maximum of the two numbers
 max_num = max(num1, num2)
-print("test")
-print(
+
 # Keep increasing max_num until it is divisible by both numbers
 while True:
     if max_num % num1 == 0 and max_num % num2 == 0:
