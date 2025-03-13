@@ -1,0 +1,23 @@
+name: Run P2 Script
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Python script with input
+        run: |
+          echo "pap" | python PRACTICALS/P2.py > output.txt 2>&1
+
+      - name: Upload output
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-output
+          path: output.txt
