@@ -1,3 +1,4 @@
+print("Script Started...")
 import os
 import openai
 import subprocess
