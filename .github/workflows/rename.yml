@@ -67,9 +67,16 @@ jobs:
                   "messages": [{"role": "user", "content": "Analyze this Python script and suggest a meaningful filename in snake_case format. Do not include any explanation:\n\n```\n'"$code"'\n```"}]
                 }')
 
+              echo "AI Response for $file: $response"  # Log raw response
+
               new_name=$(echo "$response" | jq -r '.choices[0].message.content' | tr -d '[:space:]')
               new_name=$(echo "$new_name" | tr ' ' '_')
               new_name="OTHER/${new_name}.py"
+
+              if [[ -z "$new_name" || "$new_name" == "OTHER/.py" ]]; then
+                echo "AI filename generation failed for $file. Skipping..."
+                continue
+              fi
 
               base_name="${new_name%.py}"
               count=1
@@ -82,10 +89,8 @@ jobs:
               jq --arg hash "$hash" --arg name "$new_name" '. + {($hash): $name}' "$TEMP_CACHE" > "$TEMP_CACHE.tmp" && mv "$TEMP_CACHE.tmp" "$TEMP_CACHE"
             fi
 
-            if [[ "$new_name" != "$file" ]]; then
-              mv "$file" "$new_name"
-              echo "Renamed $file -> $new_name"
-            fi
+            echo "Renaming: $file -> $new_name"
+            mv "$file" "$new_name"
           done
 
           mv "$TEMP_CACHE" "$CACHE_FILE"
