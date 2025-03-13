@@ -1,0 +1,40 @@
+name: Run Python Scripts
+
+on:
+  push:
+    paths:
+      - "**.py"  # Trigger on new or modified Python scripts
+  pull_request:
+    paths:
+      - "**.py"
+
+jobs:
+  analyze-and-run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to commit output files
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Dependencies
+        run: pip install openai
+
+      - name: Run Analysis and Execute Scripts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python .github/scripts/analyze_and_run.py
+
+      - name: Commit and Push Output Files
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add output/
+          git commit -m "Auto-generated output for new scripts" || exit 0
+          git push
