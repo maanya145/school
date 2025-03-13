@@ -3,16 +3,18 @@ import os
 import openai
 from openai import OpenAI
 import json
-import glob
+import subprocess
 
 # Initialize OpenAI client
 client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=os.environ.get("OPENAI_API_KEY"))
 
-# Get all Python files inside 'scripts/'
-modified_files = glob.glob("scripts/**/*.py", recursive=True)
+# Get modified or newly added Python files in the latest commit
+git_command = "git diff --name-only --diff-filter=AM HEAD^ HEAD"
+modified_files = subprocess.check_output(git_command, shell=True, text=True).splitlines()
+modified_files = [f for f in modified_files if f.startswith("scripts/") and f.endswith(".py")]
 
 if not modified_files:
-    print("No Python files found in 'scripts/'. Exiting...")
+    print("No modified Python files found in 'scripts/'. Exiting...")
     exit(0)
 
 # Directory to store AI-generated outputs
