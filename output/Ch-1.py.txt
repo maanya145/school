@@ -1,6 +1,6 @@
 Enter first number: 12
 Enter second number: 15
-12 test
+12 testl
 The LCM of 12 and 15 is 60
 Enter a number: 1234
 Reversed Number: 4321
