@@ -34,7 +34,7 @@ def get_test_input(code):
     Respond with a JSON array of inputs, like: ["42", "hello", "10 20"]
     """
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="mixtral-8x7b-32768",
         messages=[{"role": "user", "content": prompt}]
     )
     try:
