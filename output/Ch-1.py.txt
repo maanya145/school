@@ -1,17 +1,18 @@
-test
+Enter first number: 12
+Enter second number: 15
 The LCM of 12 and 15 is 60
-Enter a number: 
-Reversed Number: 123
+Enter a number: 1234
+Reversed Number: 4321
 Element Frequency Count:
 1: 2
 2: 3
 3: 2
 4: 3
 5: 1
-Enter a string: 
+Enter a string: Hello World
 Vowel occurrences:
 a: 0
-e: 0
+e: 1
 i: 0
-o: 0
+o: 2
 u: 0
