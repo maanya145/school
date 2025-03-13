@@ -44,12 +44,6 @@ jobs:
           pip install -r .github/scripts/requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'  # Only install if cache is missing
 
-      - name: Install Repo Project
-        shell: bash
-        run: |
-          source ./.venv/bin/activate
-          python -m pip install -U -e ./python  # Ensure local project dependencies are installed
-
       - name: Get Changed Files
         id: changed-files
         uses: tj-actions/changed-files@v41
