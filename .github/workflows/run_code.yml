@@ -56,6 +56,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         shell: bash
         run: |
+          source ./.venv/bin/activate
           python .github/scripts/analyze_and_run.py || exit 1
 
       - name: Commit and Push Output Files
