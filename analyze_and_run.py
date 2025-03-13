@@ -4,7 +4,11 @@ import subprocess
 import json
 
 # Set API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
+openai = openai.OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.environ.get("OPENAI_API_KEY")
+)
 
 # Directory to store outputs
 OUTPUT_DIR = "output"
