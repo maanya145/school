@@ -1,10 +1,8 @@
+import datetime
+current_date = datetime.date.today()
+print(current_date)
 #Write a program that reads a string and checks whether it is a palindrone string or not
 # Read input from user
-import datetime
-current_time = datetime.datetime.today()
-print(current_time)
-
-
 string = input("Enter a string: ")
 
 # Convert to lowercase and remove spaces
