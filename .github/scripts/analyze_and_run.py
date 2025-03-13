@@ -41,6 +41,7 @@ def get_test_input(code):
     """
     response = client.chat.completions.create(model="mixtral-8x7b-32768",
     messages=[{"role": "user", "content": prompt}])
+    print(response)
     try:
         inputs = json.loads(response.choices[0].message.content)
         print(input)
