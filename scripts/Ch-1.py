@@ -6,7 +6,7 @@ num2 = int(input("Enter second number: "))
 
 # Start from the maximum of the two numbers
 max_num = max(num1, num2)
-print(num1, "testl")
+
 
 # Keep increasing max_num until it is divisible by both numbers
 while True:
