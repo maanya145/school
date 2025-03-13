@@ -38,6 +38,8 @@ def get_test_input(code):
     ```
     
     Respond with a JSON array of inputs, like: ["42", "hello", "10 20"]
+    Note: - only return json array strictly
+          - also do not return more than the amount of inputs specified in the code
     """
     response = client.chat.completions.create(model="mixtral-8x7b-32768",
     messages=[{"role": "user", "content": prompt}])
