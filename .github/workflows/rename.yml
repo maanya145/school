@@ -8,6 +8,8 @@ on:
 jobs:
   rename_files:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to commit output files
 
     steps:
       - name: Checkout Repository
