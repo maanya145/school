@@ -13,10 +13,9 @@ if not modified_files:
     exit(0)
 # Set API key
 
-openai = openai.OpenAI(
-    base_url="https://api.groq.com/openai/v1",
-    api_key=os.environ.get("OPENAI_API_KEY")
-)
+
+openai.api_base = "https://api.groq.com/openai/v1"
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Directory to store outputs
 OUTPUT_DIR = "output"
