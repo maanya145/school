@@ -3,7 +3,14 @@ import os
 import openai
 import subprocess
 import json
+import glob
 
+# Get all Python files inside 'scripts/'
+modified_files = glob.glob("scripts/**/*.py", recursive=True)
+
+if not modified_files:
+    print("No Python files found in 'scripts/'. Exiting...")
+    exit(0)
 # Set API key
 
 openai = openai.OpenAI(
@@ -17,12 +24,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Get modified Python files
 # Get modified Python files inside 'scripts/' only
-result = subprocess.run(
-    ["git", "diff", "--name-only", "HEAD~1", "--", "scripts/"],
-    capture_output=True,
-    text=True
-)
-modified_files = [f.strip() for f in result.stdout.split("\n") if f.endswith(".py") and f.startswith("scripts/")]
+
 
 def get_test_input(code):
     """Use OpenAI to analyze code and generate appropriate input."""
