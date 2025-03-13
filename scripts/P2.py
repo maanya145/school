@@ -1,4 +1,4 @@
-print("1P2")
+print("1P1")
 import datetime
 current_date = datetime.date.today()
 print(current_date)
