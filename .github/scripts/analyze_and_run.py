@@ -1,6 +1,9 @@
 print("Script Started...")
 import os
 import openai
+from openai import OpenAI
+
+client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=os.environ.get("OPENAI_API_KEY"))
 import subprocess
 import json
 import glob
@@ -14,8 +17,8 @@ if not modified_files:
 # Set API key
 
 
-openai.api_base = "https://api.groq.com/openai/v1"
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+# TODO: The 'openai.api_base' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(base_url="https://api.groq.com/openai/v1")'
+# openai.api_base = "https://api.groq.com/openai/v1"
 
 # Directory to store outputs
 OUTPUT_DIR = "output"
@@ -36,12 +39,10 @@ def get_test_input(code):
     
     Respond with a JSON array of inputs, like: ["42", "hello", "10 20"]
     """
-    response = openai.ChatCompletion.create(
-        model="mixtral-8x7b-32768",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    response = client.chat.completions.create(model="mixtral-8x7b-32768",
+    messages=[{"role": "user", "content": prompt}])
     try:
-        inputs = json.loads(response["choices"][0]["message"]["content"])
+        inputs = json.loads(response.choices[0].message.content)
         return inputs if isinstance(inputs, list) else []
     except json.JSONDecodeError:
         return []
