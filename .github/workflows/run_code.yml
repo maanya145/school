@@ -24,13 +24,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"  # Specify exact version for faster setup
-          cache: "pip"  # Enable pip caching
-          cache-dependency-path: ".github/scripts/requirements.txt"
-      - name: Install Dependencies
+
+      - name: Set Up Virtual Environment
         run: |
+          python -m venv venv
+          source venv/bin/activate
           python -m pip install --upgrade pip
           pip install -r .github/scripts/requirements.txt
-        
+          
       - name: Get Changed Files
         id: changed-files
         uses: tj-actions/changed-files@v41
@@ -41,7 +42,9 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python .github/scripts/analyze_and_run.py || exit 1
+        run: |
+          source venv/bin/activate
+          python .github/scripts/analyze_and_run.py || exit 1
 
       - name: Commit and Push Output Files
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
