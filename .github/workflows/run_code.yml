@@ -34,12 +34,12 @@ jobs:
           echo "files=$MODIFIED_FILES" >> $GITHUB_ENV
 
       - name: Run Analysis in Parallel
-        if: env.files != "[]"
+        if: ${{ env.files != '[]' }}
         run: |
           echo "$files" | jq -r '.[]' | xargs -P 4 -I {} python .github/scripts/analyze_and_run.py {}
 
       - name: Commit and Push Output Files
-        if: env.files != "[]"
+        if: ${{ env.files != '[]' }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
