@@ -3,10 +3,10 @@ name: Run Python Scripts
 on:
   push:
     paths:
-      - "**.py"  # Trigger on new or modified Python scripts
+      - "scripts/**/*.py"  # Only trigger when Python files in 'scripts/' change
   pull_request:
     paths:
-      - "**.py"
+      - "scripts/**/*.py"
 
 jobs:
   analyze-and-run:
