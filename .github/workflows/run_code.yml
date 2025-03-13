@@ -22,13 +22,13 @@ jobs:
 
       - name: Set Up Python
         id: setup_python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.9"  # Use Python 3.9
+          python-version: "3.12"  
 
       - name: Cache Virtual Environment
         id: cache-venv
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./.venv/
           key: ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-${{ hashFiles('.github/scripts/requirements.txt') }}
@@ -56,7 +56,6 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         shell: bash
         run: |
-          source ./.venv/bin/activate
           python .github/scripts/analyze_and_run.py || exit 1
 
       - name: Commit and Push Output Files
