@@ -57,7 +57,7 @@ jobs:
         shell: bash
         run: |
           source ./.venv/bin/activate
-          python .github/scripts/rename_other_files.py || exit 1
+          python .github/scripts/rename.py || exit 1
 
       - name: Commit and Push Renamed Files
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
