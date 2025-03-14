@@ -46,7 +46,7 @@ def generate_filename(file_path):
                 {
                     "role": "user",
                     "content": [
-                        { "type": "text", "text": "Generate a short, meaningful filename for this image. Only return the name, no extra text or extensions." },
+                        { "type": "text", "text": "Generate a short, meaningful filename for this file. Only return the name, no extra text or extensions." },
                         { "type": "file", "file": { "file_id": file.id } }
                     ]
                 }
