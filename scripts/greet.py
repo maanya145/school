@@ -1,3 +1,3 @@
 x = "hey"
 y = input("Enter your name: ")
-print(f"{hey}, y)
+print(f"{x}, y)
