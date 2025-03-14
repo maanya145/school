@@ -1,4 +1,4 @@
-#2. Write a program that reads a string and checks whether it is a palindrone string or not
+#2. Write a program that reads a string and checks whether it is a palindrone string or not.
 
 import datetime
 current_date = datetime.date.today()
