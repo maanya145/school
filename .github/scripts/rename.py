@@ -2,6 +2,7 @@ import os
 import openai
 from openai import OpenAI
 import subprocess
+import base64
 
 print("📢 Script Started...")
 
@@ -21,38 +22,45 @@ modified_files = [f for f in modified_files if f.startswith("OTHER/")]
 if not modified_files:
     print("✅ No modified files found in 'OTHER/'. Exiting...")
     exit(0)
+# Function to encode the image
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
 
 def generate_filename(file_path):
-    """Use OpenAI to generate a meaningful name based on the file type and content."""
+    """Use OpenAI to generate a meaningful name based strictly on content, without extensions."""
     file_extension = os.path.splitext(file_path)[1].lower()
-
+    
     # Try to extract readable content
     try:
-        if file_extension in [".txt", ".md", ".json", ".csv"]:
+        if file_extension in [".txt", ".md", ".json", ".csv", ".py"]:
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read(500)  # Read first 500 characters
+            messages = [{"role": "user", "content": f"Generate a short, meaningful filename based on this content. Only return the name, no extra text or extensions:\n\n```\n{content}\n```"}]
+        
+        elif file_extension in [".jpg", ".png", ".jpeg"]:
+            base64_image = encode_image(file_path)
+            messages = [
+                {
+                    "role": "user",
+                    "content": [
+                        { "type": "text", "text": "Generate a short, meaningful filename for this image. Only return the name, no extra text or extensions." },
+                        { "type": "image_url", "image_url": { "url": f"data:image/jpeg;base64,{base64_image}" } }
+                    ]
+                }
+            ]
+        
         else:
-            content = f"[{file_extension.upper()} file] (binary content not readable)"
+            messages = [{"role": "user", "content": f"Generate a short, meaningful filename for this {file_extension.upper()} file. Only return the name, no extra text or extensions."}]
+
     except Exception as e:
         print(f"⚠️ Error reading {file_path}: {e}")
-        content = "[Unreadable content]"
-
-    prompt = f"""
-    Here is a file from a project directory. It contains the following content:
-    
-    ```
-    {content}
-    ```
-
-    Suggest a **concise and meaningful name** that describes the file's content **without the extension**.
-    
-    Only return the suggested name **without any additional text**.
-    """
+        return None
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.3-70b-specdec",
-            messages=[{"role": "user", "content": prompt}]
+            model="llama-3.2-90b-vision-preview",
+            messages=messages
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
