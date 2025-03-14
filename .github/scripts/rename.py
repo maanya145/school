@@ -37,6 +37,20 @@ def generate_filename(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
                 content = f.read(500)  # Read first 500 characters
             messages = [{"role": "user", "content": f"Generate a short, meaningful filename based on this content. Only return the name, no extra text or extensions:\n\n```\n{content}\n```"}]
+        elif file_extension in [".pdf"]:
+            file = client.files.create(
+                file=open(file_path, "rb"),
+                purpose="user_data"
+            )
+            messages = [
+                {
+                    "role": "user",
+                    "content": [
+                        { "type": "text", "text": "Generate a short, meaningful filename for this image. Only return the name, no extra text or extensions." },
+                        { "type": "file", "file": { "file_id": file.id } }
+                    ]
+                }
+            ]
         
         elif file_extension in [".jpg", ".png", ".jpeg"]:
             base64_image = encode_image(file_path)
