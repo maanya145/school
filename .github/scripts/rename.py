@@ -35,7 +35,7 @@ def generate_filename(file_path):
     try:
         if file_extension in [".txt", ".md", ".json", ".csv", ".py"]:
             with open(file_path, "r", encoding="utf-8") as f:
-                content = f.read(500)  # Read first 500 characters
+                content = f.read(20000)
             messages = [{"role": "user", "content": f"Generate a short, meaningful filename based on this content. Only return the name, no extra text or extensions:\n\n```\n{content}\n```"}]
         elif file_extension in [".pdf"]:
             file = client.files.create(
