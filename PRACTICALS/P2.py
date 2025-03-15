@@ -1,7 +1,7 @@
 import datetime
 current_date = datetime.date.today()
 print(current_date)
-#Write a program that reads a string and checks whether it is a palindrone string or not
+#Write a program that reads a string and checks whether it is a palindrone string or not.
 # Read input from user
 string = input("Enter a string: ")
 
