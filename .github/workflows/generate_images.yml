@@ -3,10 +3,10 @@ name: Generate Code Images
 on:
   push:
     paths:
-      - "scripts/**/*.py"
+      - "code_snippets/**/*.py"
   pull_request:
     paths:
-      - "scripts/**/*.py"
+      - "code_snippets/**/*.py"
 
 jobs:
   generate-images:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ./.venv/
-          key: ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-${{ hashFiles('.github/scripts/requirements.txt') }}
+          key: ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-${{ hashFiles('.github/scripts/requirements_image.txt') }}
           restore-keys: |
             ${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-venv-
 
@@ -48,7 +48,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v41
         with:
-          files: scripts/**/*.py
+          files: code_snippets/**/*.py
 
       - name: Generate Code Images
         if: steps.changed-files.outputs.any_changed == 'true'
