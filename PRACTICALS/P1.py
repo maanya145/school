@@ -1,4 +1,4 @@
-#1. Write a Python program to find the LCM (Least Common Multiple) of two numbers.
+#1. Write a Python program to find the LCM (Least Common Multiple) of two numbers
 
 #date and time
 import datetime
