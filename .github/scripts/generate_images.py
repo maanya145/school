@@ -9,8 +9,8 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Directories
-CODE_DIR = "code_snippets"
-OUTPUT_DIR = "generated_images"
+CODE_DIR = "PRACTICALS"
+OUTPUT_DIR = "PRACTICALS/images"
 
 # Ensure output directory exists
 if not os.path.exists(OUTPUT_DIR):
