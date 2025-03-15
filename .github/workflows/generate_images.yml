@@ -55,7 +55,7 @@ jobs:
         shell: bash
         run: |
           source ./.venv/bin/activate
-          python scripts/generate_images.py || exit 1
+          python .github/scripts/generate_images.py || exit 1
 
       - name: Commit and Push Generated Images
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
