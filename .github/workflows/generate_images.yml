@@ -56,7 +56,10 @@ jobs:
         run: |
           source ./.venv/bin/activate
           python .github/scripts/generate_images.py || exit 1
-
+          
+      - name: Pull latest changes
+        run: git pull origin main
+        
       - name: Commit and Push Generated Images
         if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
