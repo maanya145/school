@@ -1,4 +1,4 @@
-Here are the answers to the worksheet with blanks filled in:
+answers to the worksheet:
 
 ## PYTHON – REVISION TOUR
 
