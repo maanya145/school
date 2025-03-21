@@ -37,7 +37,7 @@ answers to the worksheet:
     C = -11 % 4
     print(C)
     ```
-    **3**
+    **1**
 
 12. Two advantages of Python:
     - **Easy to learn and read**.
