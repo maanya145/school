@@ -205,12 +205,12 @@ answers to the worksheet:
     - (iv) **`5 3 5`**
 
 35. **Type conversion in Python:**
-    Type conversion in Python refers to converting one data type into another. It can be done in two ways:  
+   - **Type conversion in Python refers to converting one data type into another. It can be done in two ways:***
 
-   ### **1. Implicit Type Conversion (Automatic Conversion)**  
-   Python automatically converts a smaller data type into a larger one to prevent data loss.
+    **1. Implicit Type Conversion (Automatic Conversion)**  
+  - **Python automatically converts a smaller data type into a larger one to prevent data loss.**
 
-   #### **Example:**  
+    **Example:**  
    ```python
    a = 5      # Integer
    b = 2.5    # Float
@@ -219,10 +219,9 @@ answers to the worksheet:
    print(type(c))  # Output: <class 'float'>
    ```
 
-   ### **2. Explicit Type Conversion (Type Casting)**
-   The programmer manually converts one data type into another using functions like int(), float(), str(), etc.
-
-   #### **Example:**  
+    **2. Explicit Type Conversion (Type Casting)**
+   - **The programmer manually converts one data type into another using functions like int(), float(), str(), etc.**
+   **Example:**  
    ```python
    x = "10"   # String
    y = int(x) # Convert string to integer
