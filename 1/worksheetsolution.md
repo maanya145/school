@@ -205,11 +205,38 @@ answers to the worksheet:
     - (iv) **`5 3 5`**
 
 35. **Type conversion in Python:**
-    ```python
-    x = "10"
-    y = int(x)  # String to Integer
-    z = float(x)  # String to Float
-    ```
+    Type conversion in Python refers to converting one data type into another. It can be done in two ways:  
+
+   ### **1. Implicit Type Conversion (Automatic Conversion)**  
+   Python automatically converts a smaller data type into a larger one to prevent data loss.
+
+   #### **Example:**  
+   ```python
+   a = 5      # Integer
+   b = 2.5    # Float
+   c = a + b  # Integer + Float → Float
+   print(c)   # Output: 7.5
+   print(type(c))  # Output: <class 'float'>
+   ```
+
+   ### **2. Explicit Type Conversion (Type Casting)**
+   The programmer manually converts one data type into another using functions like int(), float(), str(), etc.
+
+   #### **Example:**  
+   ```python
+   x = "10"   # String
+   y = int(x) # Convert string to integer
+   print(y, type(y))  # Output: 10 <class 'int'>
+   
+   a = 5
+   b = float(a)  # Convert integer to float
+   print(b, type(b))  # Output: 5.0 <class 'float'>
+   
+   num = 100
+   text = str(num)  # Convert integer to string
+   print(text, type(text))  # Output: '100' <class 'str'>
+   ```
+
 
 36. Infinite loop: **`while True:`**.
 
