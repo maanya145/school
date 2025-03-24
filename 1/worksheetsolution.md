@@ -134,8 +134,10 @@ answers to the worksheet:
     - String: **Immutable sequence of characters**.
 
 26. **Ordered vs Unordered collection:**
-    - Ordered: **List, Tuple**.
-    - Unordered: **Set, Dictionary**.
+    - Ordered collection: **Maintains the sequence of elements**
+                          **Example: List, Tuple**.
+    - Unordered collection: **Does not guarantee element order**
+                            **Example:  Set, Dictionary**.
 
 27. **Dictionary operations:**
     ```python
