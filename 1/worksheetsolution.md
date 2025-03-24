@@ -372,7 +372,7 @@ answers to the worksheet:
             A = A + 100
     print(S)
     ```
-    Output: **25**
+    Output: **65**
 
 52. **Output of given conditional block:**
     ```python
