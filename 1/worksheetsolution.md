@@ -201,7 +201,7 @@ answers to the worksheet:
     ```
 
 34. Possible outputs:
-    - (ii) **`4 4 4`**
+    - (i) **`2 1 3`**
     - (iv) **`5 3 5`**
 
 35. **Type conversion in Python:**
