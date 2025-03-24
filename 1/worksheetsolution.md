@@ -411,7 +411,7 @@ answers to the worksheet:
             Msg1 = Msg1 + Msg[i].upper()
     print(Msg1)
     ```
-    Output: **"\*o*M\*t\*r"**
+    Output: **"cO\*P\*t\*R"**
 
 55. **Output of identity comparison:**
     ```python
