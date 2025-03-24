@@ -242,11 +242,14 @@ answers to the worksheet:
 37. **Check divisibility by 7:**
     ```python
     num = int(input("Enter number: "))
-    print("Divisible by 7" if num % 7 == 0 else "Not divisible")
+    if num % 7 == 0:
+       print("Divisible by 7.")
+    else:
+       print("Not divisible by 7.")
     ```
 
 38. 
-    - `for i in range(10, 101, 10):`
+    - `for i in range(10, 101):`
     - `for i in range(10, 0, -1):`
 39. **Output when `n = 10` and `n = 11`**  
     ```python
