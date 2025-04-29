@@ -1,5 +1,4 @@
-#WAP to ensure that integer is given as input in case other, it should display not a valid integer
-
+# WAP to ensure that integer is given as input in case other, it should display not a valid integer
 
 
 try:
@@ -8,4 +7,3 @@ except ValueError:
     print("Not a valid integer.")
 finally:
     print(f"x is {x}")
-
