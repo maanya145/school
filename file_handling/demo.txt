@@ -1,0 +1,4 @@
+These are the text files which
+stores the text in the same form
+as typed. Here the new line
+character ends a line and text translations take place.
