@@ -1,0 +1,3 @@
+A text file is a type of computer file that primarily stores data in the form of text, structured as a sequence of lines. 
+It's often used to store plain text, program source code, configuration data, and other types of textual information. 
+Text files are generally non-executable and can be easily read, edited, and transferred between different computer systems. 
