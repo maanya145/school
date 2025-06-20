@@ -1,8 +1,8 @@
 # Write and read the data from binary file
 import pickle
 
-dat = {"roll": 101, "name": "Arjun", "marks": 95}
 
+dat = {"roll": 101, "name": "Arjun", "marks": 95}
 with open("student.dat", "wb") as file:
     pickle.dump(dat, file)
 file.close()
@@ -68,3 +68,5 @@ with open("students.dat", "wb") as file:
     for record in records:
         pickle.dump(record, file)
 print("Record deleted succesfully")
+
+
