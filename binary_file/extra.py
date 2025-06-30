@@ -8,3 +8,4 @@ with open("students.dat","rb") as file:
     except EOFError:
         pass
 print("Total numbers of counts", count)
+ 
