@@ -44,18 +44,19 @@ def search_data():
     
     except:
         print("File not found")
-#Main
+
+# Main
 def main():
-    while True
+    while True:  # Added missing colon
         print("\n Students Record Menu")
         print("1. Write Student Records")
-        print("2. Display all records")"
+        print("2. Display all records")  # Removed extra quotation mark
         print("3. Search Roll No.")
         print("4. Exit")
         
-        choice=int(input("Enter your Choice"))
-        if choice == input("Enter your choice"):
-        elif choice == 1:
+        choice = int(input("Enter your Choice: "))  # Added space and colon
+        # Removed invalid if condition
+        if choice == 1:
             write_data()
         elif choice == 2:
             read_data()
@@ -66,7 +67,5 @@ def main():
             break
         else:
             print("Invalid Choice.")
-            
-        
 
 main()
