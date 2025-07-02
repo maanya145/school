@@ -1,4 +1,4 @@
-#WAP to write and read student data using a csv file.
+# WAP to write and read student data who got more than 80 marks
 import csv
 
 with open("students.csv", "w") as file:
@@ -11,4 +11,5 @@ with open("students.csv", "w") as file:
 with open("students.csv", "r") as file:
     reader = csv.reader(file)
     for row in reader:
-        print(row)
+        if int(row[2]) > 80:
+            print(row)
