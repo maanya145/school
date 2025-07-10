@@ -17,7 +17,7 @@ with open("Happiness.csv") as file:
     reader = csv.reader(file)
     for i in reader:
         p = int(i[1])
-        if p > 50000000:
+        if p > 100:
             print(i)
 with open("Happiness.csv", "r") as file:
     reader = csv.reader(file)
