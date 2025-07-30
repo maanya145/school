@@ -1,0 +1,70 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select * from club;
+ERROR 1046 (3D000): No database selected
+mysql> use clubs
+Database changed
+mysql> select * from clubs
+    -> ;
+ERROR 1146 (42S02): Table 'clubs.clubs' doesn't exist
+mysql> select * from club;
++----------+------------+------+------------+------------+---------+------+
+| COACH_ID | COACH_NAME | AGE  | SPORTS     | DATOFAPP   | PAY     | SEX  |
++----------+------------+------+------------+------------+---------+------+
+|        1 | KUKREJA    |   35 | KARATE     | 1996-03-27 | 1000.00 | M    |
+|        2 | RAVINA     |   34 | KARATE     | 1998-01-20 | 1200.00 | F    |
+|        3 | KARAN      |   34 | SQUASH     | 1998-01-19 | 2000.00 | M    |
+|        4 | TARUN      |   33 | BASKET BAL | 1998-01-01 | 1500.00 | M    |
+|        5 | ZUBIN      |   36 | SWIMMING   | 1998-01-12 |  750.00 | M    |
+|        6 | KETAKI     |   36 | SWIMMING   | 1998-02-24 |  800.00 | F    |
+|        7 | ANKITA     |   39 | SQUASH     | 1998-02-20 | 2200.00 | F    |
+|        8 | ZAREEN     |   37 | KARATE     | 1998-02-22 | 1100.00 | F    |
+|        9 | KUSH       |   41 | SWIMMING   | 1998-01-13 |  900.00 | M    |
+|       10 | SHAILYA    |   37 | BASKETBALL | 1998-02-19 | 1700.00 | M    |
++----------+------------+------+------------+------------+---------+------+
+10 rows in set (0.00 sec)
+
+mysql> select count(DISTINCT SPORTS) FROM CLUB;
++------------------------+
+| count(DISTINCT SPORTS) |
++------------------------+
+|                      5 |
++------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT MIN(AGE) FROM CLUB WHERE SEX = 'F';
++----------+
+| MIN(AGE) |
++----------+
+|       34 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> SELECT AVG(PAY) FROM CLUB WHERE SPORTS ='KARATE';
++-------------+
+| AVG(PAY)    |
++-------------+
+| 1100.000000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(PAY) FROM CLUB WHERE DATOFAPP > '1998-01-31';
++----------+
+| SUM(PAY) |
++----------+
+|  5800.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql>
