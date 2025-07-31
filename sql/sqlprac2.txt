@@ -1,0 +1,94 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use cw
+Database changed
+
+mysql> select * from students
+    -> ;
++---------+--------------+-------+-------+------+
+| ROLL_NO | NAME         | CLASS | MARKS | GEN  |
++---------+--------------+-------+-------+------+
+|     101 | Riya Shah    |    12 |    87 | F    |
+|     102 | Aryan Mehta  |    12 |    92 | M    |
+|     103 | Khushi Patel |    12 |    78 | F    |
+|     104 | Ravi Iyer    |    12 |    65 | M    |
+|     105 | Asha Ray     |    12 |    90 | F    |
++---------+--------------+-------+-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select name,marks from students
+    -> ;
++--------------+-------+
+| name         | marks |
++--------------+-------+
+| Riya Shah    |    87 |
+| Aryan Mehta  |    92 |
+| Khushi Patel |    78 |
+| Ravi Iyer    |    65 |
+| Asha Ray     |    90 |
++--------------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select name,marks from students;^C
+mysql> select * from students where gen="F";
++---------+--------------+-------+-------+------+
+| ROLL_NO | NAME         | CLASS | MARKS | GEN  |
++---------+--------------+-------+-------+------+
+|     101 | Riya Shah    |    12 |    87 | F    |
+|     103 | Khushi Patel |    12 |    78 | F    |
+|     105 | Asha Ray     |    12 |    90 | F    |
++---------+--------------+-------+-------+------+
+3 rows in set (0.00 sec)
+
+mysql> select name from students where marks > 85;
++-------------+
+| name        |
++-------------+
+| Riya Shah   |
+| Aryan Mehta |
+| Asha Ray    |
++-------------+
+3 rows in set (0.00 sec)
+
+mysql> select count(*) from students where gen="M";
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select avg(marks) fri=om students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=om students' at line 1
+mysql> select avg(marks) from students;
++------------+
+| avg(marks) |
++------------+
+|    82.4000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select name from students order by name;
++--------------+
+| name         |
++--------------+
+| Aryan Mehta  |
+| Asha Ray     |
+| Khushi Patel |
+| Ravi Iyer    |
+| Riya Shah    |
++--------------+
+5 rows in set (0.00 sec)
+
+mysql>
