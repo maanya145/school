@@ -1,0 +1,29 @@
+-- primary key (not null, unique) --
+
+create DATABASE 10aug;
+use 10aug;
+
+drop TABLE students;
+CREATE TABLE students(
+    student_ID INT PRIMARY KEY,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50)
+);
+
+desc students;
+
+
+-- foreign key -- 
+
+
+create table marks(
+    student_ID INT PRIMARY KEY,
+    roll_no INT,
+    subjects VARCHAR(50),
+    marks INT,
+    FOREIGN KEY (student_ID) REFERENCES students(student_ID)
+);
+
+
+desc marks;
+
