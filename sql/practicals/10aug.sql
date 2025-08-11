@@ -1,3 +1,4 @@
+-- Active: 1754281597996@@127.0.0.1@3306@10aug
 -- primary key (not null, unique) --
 
 create DATABASE 10aug;
@@ -26,4 +27,25 @@ create table marks(
 
 
 desc marks;
+
+
+create table members(
+    member_ID INT,
+    email VARCHAR(100) unique,
+    phone VARCHAR(10) unique,
+    PRIMARY KEY(member_ID)
+);
+
+desc members;
+
+
+create table orders(
+    order_ID INT,
+    product_ID INT,
+    quantity INT,
+    PRIMARY KEY(order_ID, product_ID)
+);
+
+
+desc orders;
 
