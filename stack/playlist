@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+	<gameinfos>
+		<game_mode>2</game_mode>
+		<script_name>Trackmania/TM_Cup_Online</script_name>
+	</gameinfos>
+
+	<startindex>0</startindex>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 01.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 02.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 03.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 04.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 05.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 06.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 07.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 08.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 09.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 10.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 11.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 12.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 13.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 14.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 15.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 16.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 17.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 18.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 19.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 20.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 21.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 22.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 23.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 24.Map.Gbx</file></map>
+	<map><file>Campaigns/Fall 2021/Fall 2021 - 25.Map.Gbx</file></map>
+</playlist> 
