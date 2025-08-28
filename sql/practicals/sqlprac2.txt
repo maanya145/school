@@ -27,8 +27,7 @@ mysql> select * from students
 +---------+--------------+-------+-------+------+
 5 rows in set (0.00 sec)
 
-mysql> select name,marks from students
-    -> ;
+mysql> select name,marks from students;
 +--------------+-------+
 | name         | marks |
 +--------------+-------+
@@ -40,7 +39,6 @@ mysql> select name,marks from students
 +--------------+-------+
 5 rows in set (0.00 sec)
 
-mysql> select name,marks from students;^C
 mysql> select * from students where gen="F";
 +---------+--------------+-------+-------+------+
 | ROLL_NO | NAME         | CLASS | MARKS | GEN  |
@@ -69,8 +67,6 @@ mysql> select count(*) from students where gen="M";
 +----------+
 1 row in set (0.01 sec)
 
-mysql> select avg(marks) fri=om students;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=om students' at line 1
 mysql> select avg(marks) from students;
 +------------+
 | avg(marks) |

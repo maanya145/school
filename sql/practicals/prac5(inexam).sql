@@ -1,5 +1,5 @@
-create DATABASE pract5;
-use pract5;
+create DATABASE prac5;
+use prac5;
 
 
 create TABLE sales(

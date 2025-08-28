@@ -1,0 +1,73 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create DATABASE prac5;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use prac5;
+Database changed
+mysql> create TABLE sales(
+    ->     sales_id int PRIMARY KEY,
+    ->     customer_name VARCHAR(20),
+    ->     product VARCHAR(20),
+    ->     quantity INT,
+    ->     price INT
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO sales (sales_id, customer_name, product, quantity, price)
+    -> VALUES
+    ->     (101, 'Ramesh', 'Laptop', 5, 60000),
+    ->     (102, 'Meera', 'Tablet', 3, 15000),
+    ->     (103, 'Sangeeta', 'Laptop', 10, 60000),
+    ->     (104, 'Mohan', 'Phone', 4, 20000),
+    ->     (105, 'Preeti', 'Phone', 10, 20000),
+    ->     (106, 'Mike', 'Laptop', 3, 60000),
+    ->     (107, 'George', 'Tablet', 5, 15000);
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT product, SUM(quantity) from sales group by product having sum(quantity) > 12;
++---------+---------------+
+| product | SUM(quantity) |
++---------+---------------+
+| Laptop  |            18 |
+| Phone   |            14 |
++---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from sales order by product desc;
++----------+---------------+---------+----------+-------+
+| sales_id | customer_name | product | quantity | price |
++----------+---------------+---------+----------+-------+
+|      102 | Meera         | Tablet  |        3 | 15000 |
+|      107 | George        | Tablet  |        5 | 15000 |
+|      104 | Mohan         | Phone   |        4 | 20000 |
+|      105 | Preeti        | Phone   |       10 | 20000 |
+|      101 | Ramesh        | Laptop  |        5 | 60000 |
+|      103 | Sangeeta      | Laptop  |       10 | 60000 |
+|      106 | Mike          | Laptop  |        3 | 60000 |
++----------+---------------+---------+----------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select distinct product from sales;
++---------+
+| product |
++---------+
+| Laptop  |
+| Tablet  |
+| Phone   |
++---------+
+3 rows in set (0.00 sec)
+
+mysql>

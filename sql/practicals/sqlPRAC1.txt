@@ -11,13 +11,8 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql> select * from club;
-ERROR 1046 (3D000): No database selected
 mysql> use clubs
 Database changed
-mysql> select * from clubs
-    -> ;
-ERROR 1146 (42S02): Table 'clubs.clubs' doesn't exist
 mysql> select * from club;
 +----------+------------+------+------------+------------+---------+------+
 | COACH_ID | COACH_NAME | AGE  | SPORTS     | DATOFAPP   | PAY     | SEX  |

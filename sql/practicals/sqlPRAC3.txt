@@ -11,14 +11,6 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql> CREATE TABLE Projects (
-    ->     P_id VARCHAR(10) PRIMARY KEY,
-    ->     Pname VARCHAR(100),
-    ->     Language VARCHAR(50),
-    ->     Startdate DATE,
-    ->     Enddate DATE
-    -> );
-ERROR 1046 (3D000): No database selected
 mysql> use cw
 Database changed
 mysql> CREATE TABLE Projects (
@@ -50,20 +42,10 @@ mysql>  select * from projects
 +------+---------------------------+----------+------------+------------+
 4 rows in set (0.00 sec)
 
-mysql> alter table projects add primary key(p_id);
-ERROR 1068 (42000): Multiple primary key defined
-mysql> alter table projects remove primary key(p_id);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primary key(p_id)' at line 1
-mysql> alter table projects delete primary key(p_id);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delete primary key(p_id)' at line 1
-mysql>  ALTER TABLE table_name DROP PRIMARY KEY;
-ERROR 1146 (42S02): Table 'cw.table_name' doesn't exist
 mysql>  ALTER TABLE projects DROP PRIMARY KEY;
 Query OK, 4 rows affected (0.03 sec)
 Records: 4  Duplicates: 0  Warnings: 0
 
-mysql> alter table projects delete primary key(p_id);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delete primary key(p_id)' at line 1
 mysql> alter table projects add primary key(p_id);
 Query OK, 0 rows affected (0.03 sec)
 Records: 0  Duplicates: 0  Warnings: 0

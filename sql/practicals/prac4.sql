@@ -1,7 +1,6 @@
 -- Active: 1754281597996@@127.0.0.1@3306@cw
 use cw;
 
-drop TABLE sales;
 CREATE table sales(
     salesID int PRIMARY KEY,
     Product VARCHAR(20),
