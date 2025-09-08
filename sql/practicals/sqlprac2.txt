@@ -14,8 +14,25 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> use cw
 Database changed
 
-mysql> select * from students
-    -> ;
+mysql> CREATE TABLE Students (
+    ->     ROLL_NO INT PRIMARY KEY,
+    ->     NAME VARCHAR(50),
+    ->     CLASS INT,
+    ->     MARKS INT,
+    ->     GEN CHAR(1)
+    -> );
+Query OK, 0 rows affected (1.81 sec)
+
+mysql> INSERT INTO Students (ROLL_NO, NAME, CLASS, MARKS, GEN) VALUES
+    -> (101, 'Riya Shah', 12, 87, 'F'),
+    -> (102, 'Aryan Mehta', 12, 92, 'M'),
+    -> (103, 'Khushi Patel', 12, 78, 'F'),
+    -> (104, 'Ravi Iyer', 12, 65, 'M'),
+    -> (105, 'Asha Ray', 12, 90, 'F');
+Query OK, 5 rows affected (0.83 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
 +---------+--------------+-------+-------+------+
 | ROLL_NO | NAME         | CLASS | MARKS | GEN  |
 +---------+--------------+-------+-------+------+
